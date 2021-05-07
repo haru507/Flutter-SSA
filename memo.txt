@@ -1,0 +1,6 @@
+やることリスト
+・ユーザ管理手法
+・Provider学習
+・位置情報　GCP　GoogleMapsApi
+・cloud functions
+・Hot Pepper API
