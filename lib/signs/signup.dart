@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:store_search_app/routes/routes.dart';
-import '../models/signup_model.dart';
+import 'package:store_search_app/models/signup_model.dart';
 import 'package:provider/provider.dart';
-import '../components/drawer.dart';
+import 'package:store_search_app/components/drawer.dart';
 import 'package:flutter/gestures.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -110,7 +110,7 @@ class Signup extends StatelessWidget {
                         }
                     })
                   ],
-                ),  
+                ),
               )
             );
           }),

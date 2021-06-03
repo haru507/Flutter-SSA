@@ -6,6 +6,8 @@ class SignInModel extends ChangeNotifier{
   String email = "";
   String password = "";
   String message = '';
+  String uid = "";
+  String username = "";
   bool showPassword = false;
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -15,9 +17,13 @@ class SignInModel extends ChangeNotifier{
       email: email,
       password: password
     );
+    this.uid = result.user.uid;
+    DocumentSnapshot docSnapshot = await Firestore.instance.collection("users").document(uid).get();
+    final user = docSnapshot.data;
 
-    final uid = result.user.uid;
-    // 端末に保存
+    this.username = user['username'];
+
+    notifyListeners();
   }
 
   void togglePasswordVisible() { //パスワード表示切り替え
@@ -44,9 +50,5 @@ class SignInModel extends ChangeNotifier{
     } else {
       return null;
     }
-  }
-
-  Future signOut() async {
-    await FirebaseAuth.instance.signOut();
   }
 }

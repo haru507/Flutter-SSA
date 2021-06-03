@@ -281,7 +281,9 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
   - Flutter (1.0.0)
-  - "geolocator (5.3.2+2)":
+  - geocoder (0.0.1):
+    - Flutter
+  - geolocator (6.2.0):
     - Flutter
   - GoogleAppMeasurement (6.9.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
@@ -336,8 +338,6 @@ PODS:
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.5.0)
   - leveldb-library (1.22.1)
-  - "location_permissions (3.0.0+1)":
-    - Flutter
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -350,8 +350,8 @@ DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
+  - geocoder (from `.symlinks/plugins/geocoder/ios`)
   - geolocator (from `.symlinks/plugins/geolocator/ios`)
-  - location_permissions (from `.symlinks/plugins/location_permissions/ios`)
 
 SPEC REPOS:
   trunk:
@@ -383,10 +383,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_core/ios"
   Flutter:
     :path: Flutter
+  geocoder:
+    :path: ".symlinks/plugins/geocoder/ios"
   geolocator:
     :path: ".symlinks/plugins/geolocator/ios"
-  location_permissions:
-    :path: ".symlinks/plugins/location_permissions/ios"
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -394,7 +394,7 @@ SPEC CHECKSUMS:
   cloud_firestore: 10fd4a09ebffc33efd64708106e2e7de701fe9ae
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   firebase_auth: d99b993c1405096e66c58211b1cd956c23eed1c5
-  firebase_core: 335c02abd48672b7c83c683df833d0488a72e73e
+  firebase_core: a8a3fe72627891cb05558a6ba230b2061e75e18e
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
   FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
@@ -402,7 +402,8 @@ SPEC CHECKSUMS:
   FirebaseFirestore: 9b2f1b9b9a6f2f0b6fb7484b9e32ab7e39243554
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  geolocator: f7622e0e7e2a24718285b73916d60c4a54b9f5b6
+  geocoder: 3cfab70531a0b367e917bafe82df4c30f6d4c45a
+  geolocator: f5e3de65e241caba7ce3e8a618803387bda73384
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -410,7 +411,6 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
-  location_permissions: 7e0f9aa0f60deb8ff93ddf0e2a164c7e8197bc94
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 

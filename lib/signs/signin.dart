@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:store_search_app/routes/routes.dart';
-import '../models/signin_model.dart';
+import 'package:store_search_app/models/signin_model.dart';
 import 'package:provider/provider.dart';
-import '../components/drawer.dart';
+import 'package:store_search_app/components/drawer.dart';
 import 'package:flutter/gestures.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:store_search_app/models/user_model.dart';
 
 class Signin extends StatelessWidget {
   static const String routeName = "/signin";
@@ -16,6 +17,7 @@ class Signin extends StatelessWidget {
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
+    final UserModel userModel = Provider.of<UserModel>(context);
 
     return ChangeNotifierProvider<SignInModel>(
       create: (_) => SignInModel(),
@@ -57,7 +59,6 @@ class Signin extends StatelessWidget {
                       ),
                       obscureText: !context.read<SignInModel>().showPassword,
                       controller: passwordController,
-                      
                       onSaved: (text) {
                         model.password = text;
                       },
@@ -88,6 +89,7 @@ class Signin extends StatelessWidget {
                             _isFlag = true;
                             _loginFormKey.currentState.save();
                             await model.signIn();
+                            userModel.setUser(context.read<SignInModel>().uid, context.read<SignInModel>().username);
                             _showDialog(context, 'ログイン成功。検索画面に遷移します。');
                             emailController.clear();
                             passwordController.clear();
@@ -98,7 +100,7 @@ class Signin extends StatelessWidget {
                         }
                     })
                   ],
-                ),  
+                ),
               ),
             );
           }),
@@ -119,7 +121,7 @@ class Signin extends StatelessWidget {
           actions: <Widget>[
             ElevatedButton(onPressed: () {
               if(_isFlag){
-                Navigator.pushReplacementNamed(context, Routes.search); 
+                Navigator.pushReplacementNamed(context, Routes.search);
               }else{
                 Navigator.pop(context);
               }

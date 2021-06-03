@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel extends ChangeNotifier{
-  UserModel user;
+  // FirebaseUser user;
+  String uid = "";
+  String username = "";
 
-  void setUser(UserModel newUser){
-    this.user = newUser;
+  void setUser(String uid, String username){
+    this.uid = uid;
+    this.username = username;
+    notifyListeners();
+  }
+
+  String getUser(){
+    return this.uid;
+  }
+
+  Future signout() {
+    FirebaseAuth.instance.signOut();
+    this.uid = "";
+    this.username = "";
+    print(uid);
     notifyListeners();
   }
 }

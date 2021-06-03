@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignUpModel extends ChangeNotifier{
+  String uid = '';
   String email = "";
   String username = "";
   String password = "";
@@ -12,24 +13,23 @@ class SignUpModel extends ChangeNotifier{
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   Future signUp() async {
-    
+
     final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
       email: email,
-      password: password
+      password: password,
     )).user;
 
-    final mail = user.email;
-
-    Firestore.instance.collection('users').add(
+    await Firestore.instance.collection('users').document(user.uid).setData(
       {
-        'email': mail,
+        'email': email,
         'username': username,
         'createdAt': Timestamp.now(),
       },
     );
   }
 
-  void togglePasswordVisible() { //パスワード表示切り替え
+  //パスワード表示切り替え
+  void togglePasswordVisible() {
     showPassword = !showPassword;
     notifyListeners();
   }

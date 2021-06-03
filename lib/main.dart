@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
-import 'routes/routes.dart';
-import 'top.dart';
-import 'search.dart';
-import 'history.dart';
-import 'signs/signin.dart';
-import 'signs/signup.dart';
-import 'models/user_model.dart';
+import 'package:provider/provider.dart';
+import 'package:store_search_app/routes/routes.dart';
+import 'package:store_search_app/top.dart';
+import 'package:store_search_app/search.dart';
+import 'package:store_search_app/history.dart';
+import 'package:store_search_app/signs/signin.dart';
+import 'package:store_search_app/signs/signup.dart';
+import 'package:store_search_app/models/user_model.dart';
+import 'package:store_search_app/models/search_model.dart';
+import 'package:store_search_app/components/result.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UserModel>(create: (context) => UserModel()),
+        ChangeNotifierProvider<SearchModel>(create: (context) => SearchModel()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  final UserModel user = UserModel();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return  MaterialApp(
       title: '飯サーチ',
       theme: _createTheme(),
       home: Top(),
@@ -26,6 +36,7 @@ class MyApp extends StatelessWidget {
         Routes.signup: (context) => Signup(),
         Routes.signin: (context) => Signin(),
         Routes.history: (context) => History(),
+        Routes.result: (context) => Result(),
       },
     );
   }

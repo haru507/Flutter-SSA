@@ -10,4 +10,12 @@ import Flutter
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+
+  // func applicationWillResignActive(application: UIApplication) {
+  //       self.backgroundTaskID = application.beginBackgroundTaskWithExpirationHandler(){
+  //           [weak self] in
+  //           application.endBackgroundTask((self?.backgroundTaskID)!)
+  //           self?.backgroundTaskID = UIBackgroundTaskInvalid
+  //       }
+  //   }
 }

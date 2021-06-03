@@ -1,6 +1,6 @@
 やることリスト
-・ユーザ管理手法
-・Provider学習
+・Providerパターン or Hooksパターンで描き直し
+（ユーザの管理とドロワー内の表示の切り替え）
 ・位置情報　GCP　GoogleMapsApi
-・cloud functions
-・Hot Pepper API
+・cloud functions（Typescript??）
+・ ↑ Hot Pepper API
